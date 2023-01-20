@@ -5,7 +5,9 @@ orbs:
 workflows:
   build-app-with-test:
     jobs:
-      - build-and-test
+      - build-and-test:
+          when: 
+            equal: [ https://github.com/imlogang/pythonanywhere, <<pipeline.project.git_url>> ]
       - deploy:
           requires:
             - build-and-test
